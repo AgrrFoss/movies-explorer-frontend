@@ -1,0 +1,14 @@
+.nav {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+}
+.nav__button {
+    padding: 10px 23px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    background-color: #E8E8E8;
+    border: none;
+    border-radius: 10px;
+}

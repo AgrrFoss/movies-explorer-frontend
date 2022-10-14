@@ -1,0 +1,46 @@
+.footer{
+    background-color: #FAFAFA;
+    width: 100%;
+}
+.footer__content {
+    max-width: 1140px;
+    margin: auto;
+}
+
+.footer__project-name-block {
+    padding-top: 79px;
+    width: 100%;
+    border-bottom: 1px solid #E8E8E8;
+}
+.footer__project-name {
+    text-align: center;
+    margin: 0 auto 20px;
+    color: #A0A0A0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+}
+.footer__info {
+    display: flex;
+    justify-content: space-between;
+}
+.footer__year {
+    margin: 20px 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+}
+.footer__link-block{
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    
+}
+.footer__link {
+    text-decoration: none;
+    color: black;
+    margin: 20px 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+}

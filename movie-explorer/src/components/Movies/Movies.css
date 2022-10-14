@@ -1,0 +1,17 @@
+.movies {
+    max-width: 1140px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.movies__still {
+    margin: 50px auto 80px;
+    width: 320px;
+    height: 36px;
+    border: 1px solid #E8E8E8;
+    background-color: white;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+}
