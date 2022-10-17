@@ -10,7 +10,7 @@ function SavedMovies () {
             <Header/>
             <main className='main'>
                 <SearchForm/>
-                <MoviesCardList/>
+                <MoviesCardList itIsSaved={true}/>
             </main>
             <Footer/>
         </div>

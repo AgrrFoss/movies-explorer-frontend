@@ -9,6 +9,11 @@
     width: 38px;
     height: 38px;
     background: url(../../images/logo.svg) no-repeat center;
+    transition: transform .5s linear;
+}
+.register__logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 .register__form {
     width: 100%;
@@ -38,6 +43,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
+    outline: none;
 }
 .register__input_valid {
     border-bottom: 1px solid #2BE080;
@@ -63,6 +69,11 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.2;
+    transition: transform .5s linear;
+}
+.register__submit:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 .register__text {
     text-align: center;
@@ -78,4 +89,8 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
+    transition: color .5s linear;
+}
+.register__link:hover {
+    color: #A0A0A0;
 }

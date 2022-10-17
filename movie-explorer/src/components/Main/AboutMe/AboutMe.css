@@ -58,4 +58,8 @@
     font-size: 14px;
     line-height: 1.2;
     margin: 0;
+    transition: color .5s linear;
+}
+.about-me__link:hover {
+    color: #A0A0A0;
 }

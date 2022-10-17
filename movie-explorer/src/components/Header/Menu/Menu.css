@@ -1,0 +1,77 @@
+.menu__reg{
+    color: black;
+    text-decoration: none;
+    margin: 0 30px 0 0;
+    border: none;
+    background-color: white;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    transition: color .5s linear;
+}
+.menu__reg:hover {
+    color: #A0A0A0;
+}
+
+.menu__login{
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    padding: 8px 20px;
+    background-color: #2BE080;
+    border-radius: 3px;
+    border: none;
+    transition: color .5s linear;
+}
+.menu__login:hover {
+    color: #A0A0A0;
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.menu__nav{
+    display: flex;
+    align-items: center;
+}
+.menu__films {
+    margin:0 16px 0 44px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.2;
+    transition: color .5s linear;
+}
+.menu__films:hover {
+    color: #A0A0A0;
+}
+.menu__saved {
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    transition: color .5s linear;
+}
+.menu__saved:hover {
+    color: #A0A0A0;
+}
+.menu__profile {
+    color: black;
+    text-decoration: none;
+    padding: 8px 20px;
+    background-color: #F9F9F9;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    transition: transform 0.5s linear, box-shadow 0.5s linear;
+}
+.menu__profile:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0px 3px rgba(43, 224, 128, 1);
+}

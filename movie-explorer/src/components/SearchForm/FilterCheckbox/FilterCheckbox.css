@@ -28,7 +28,11 @@
     display: flex;
     justify-content: start;
     align-items: center;
-
+    transition: box-shadow 0.3s ease-in-out;
+}
+.checkbox__switch:hover {
+    cursor: pointer;
+    box-shadow: 0 0px 3px rgba(43, 224, 128, 1);
 }
 .checkbox__level {
     width: 16px;

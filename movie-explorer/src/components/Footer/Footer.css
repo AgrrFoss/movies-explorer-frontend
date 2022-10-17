@@ -43,4 +43,8 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 1.2;
+    transition: color .5s linear;
+}
+.footer__link:hover {
+    color: #A0A0A0;
 }

@@ -9,6 +9,11 @@
     width: 38px;
     height: 38px;
     background: url(../../images/logo.svg) no-repeat center;
+    transition: transform .5s linear;
+}
+.login__logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 .login__form {
     width: 100%;
@@ -37,6 +42,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
+    outline: none;
 }
 .login__submit {
     margin: 128px 0 0;
@@ -49,7 +55,13 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.2;
+    transition: transform .5s linear;
 }
+.login__submit:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 .login__text {
     text-align: center;
     margin: 16px 0 0;
@@ -64,4 +76,8 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
+    transition: color .5s linear;
+}
+.login__link:hover {
+    color: #A0A0A0;
 }

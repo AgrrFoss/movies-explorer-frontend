@@ -4,7 +4,7 @@ import photoPath from '../../../images/gregori.jpg'
 
 function AboutMe () {
     return (
-        <section className='about-me'>
+        <section id='about-me' className='about-me'>
             <div className='about-me__title-block'>
                 <h2 className='about-me__title'>Студент</h2>
             </div>

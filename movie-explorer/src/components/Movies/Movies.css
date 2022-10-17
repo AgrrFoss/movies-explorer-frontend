@@ -14,4 +14,10 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.2;
+    transition: transform 0.5s linear, box-shadow 0.5s linear;
+}
+.movies__still:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0px 3px rgba(43, 224, 128, 1);
+    cursor: pointer;
 }

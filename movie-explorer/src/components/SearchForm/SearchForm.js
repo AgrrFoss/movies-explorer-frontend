@@ -12,7 +12,7 @@ function SearchForm () {
                     alt='иконка поиска'
                     src={iconPath}/>
                     <input
-                    className='search__field'
+                    className='search__input'
                     type='text'
                     placeholder='Фильм'
                     />

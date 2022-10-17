@@ -39,6 +39,7 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 1.2;
+    outline: none;
 }
 .profile__submit {
     margin: 220px auto 0;
@@ -47,6 +48,11 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 1.2;
+    transition: color .3s linear;
+}
+.profile__submit:hover {
+    cursor: pointer;
+    color: #A0A0A0;
 }
 .profile__exit {
     margin: 16px auto 0;
@@ -56,4 +62,9 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 1.2;
+    transition: color .3s linear;
+}
+.profile__exit:hover {
+    cursor: pointer;
+    color: #A0A0A0;
 }
