@@ -1,4 +1,5 @@
 import React from 'react';
+import './SavedMovies.css'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Header from '../Header/Header';
@@ -8,7 +9,7 @@ function SavedMovies () {
     return (
         <div>
             <Header/>
-            <main className='main'>
+            <main className='saved-movies'>
                 <SearchForm/>
                 <MoviesCardList itIsSaved={true}/>
             </main>

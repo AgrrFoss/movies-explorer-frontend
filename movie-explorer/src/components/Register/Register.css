@@ -94,3 +94,30 @@
 .register__link:hover {
     color: #A0A0A0;
 }
+@media (max-width: 768px) {
+    .register {
+        padding: 232px 10px;
+    }
+    .register__submit {
+        margin: 134px 0 0;
+    }
+}
+@media (max-width: 400px) {
+    .register {
+        padding: 56px 10px 30px;
+        max-width: 260px;
+    }
+    .register__logo {
+        align-self: center;
+    }
+    .register__form {
+        margin: 50px auto 0;
+    }
+    .register__title {
+        text-align: left;
+        margin: 0 0 56px;
+    }
+    .register__submit {
+        margin: 222px 0 0;
+    }
+}

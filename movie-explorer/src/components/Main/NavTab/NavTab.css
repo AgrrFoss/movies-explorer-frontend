@@ -31,3 +31,17 @@
 .nav__link:hover {
     color: #A0A0A0;
 }
+
+@media (max-width: 400px) {
+    .nav {
+        margin-bottom: 17px;
+        gap: 6px;
+    }
+    .nav__link {
+        border-radius: 6px;
+        padding: 5px 20px;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 1.6;
+    }
+}

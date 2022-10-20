@@ -1,6 +1,6 @@
 import React from 'react';
 import './Menu.css'
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, NavLink } from 'react-router-dom';
 
 function Menu () {
     return (
@@ -13,11 +13,25 @@ function Menu () {
             </Route>
             <Route path='/'>
                 <div className='menu'>
-                    <div className='menu__nav'>
-                        <Link to='/movies' className='menu__films'>Фильмы</Link>
-                        <Link to='/saved-movies' className='menu__saved'>Сохранённые фильмы</Link>
+                    <div className='menu-desc'>
+                        <div className='menu-desc__nav'>
+                            <NavLink to='/movies' className='menu-desc__link' activeClassName='menu-desc__link_active'>Фильмы</NavLink>
+                            <NavLink to='/saved-movies' className='menu-desc__link' activeClassName='menu-desc__link_active'>Сохранённые фильмы</NavLink>
+                        </div>
+                        <Link to='/profile' className='menu-desc__profile'>Аккаунт</Link>
                     </div>
-                    <Link to='/profile' className='menu__profile'>Аккаунт</Link>
+                    <button className='menu-mobile__button'/>
+                    <div className='menu-mobile'>
+                        <div className='menu-mobile__container'>
+                            <button className='menu-mobile__close'/>
+                            <div className='menu-mobile__nav'>
+                                <NavLink exact to='/' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Главная</NavLink>
+                                <NavLink to='/movies' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Фильмы</NavLink>
+                                <NavLink to='/saved-movies' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Сохранённые фильмы</NavLink>
+                            </div>
+                            <Link to='/profile' className='menu-mobile__profile'>Аккаунт</Link>
+                        </div>
+                    </div>
                 </div>
             </Route>
         </Switch>

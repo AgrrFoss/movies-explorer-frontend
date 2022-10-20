@@ -46,7 +46,7 @@
     background-color: white;
     border: none;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.2;
     transition: color .3s linear;
 }
@@ -59,12 +59,37 @@
     background-color: white;
     border: none;
     color: #EE3465;
-    font-weight: 400;
-    font-size: 11px;
+    font-weight: 500;
+    font-size: 13px;
     line-height: 1.2;
     transition: color .3s linear;
 }
 .profile__exit:hover {
     cursor: pointer;
     color: #A0A0A0;
+}
+@media (max-width: 768px) {
+    .profile__form {
+        padding: 236px 0 269px;
+    }
+    .profile__inputs {
+        margin: 96px auto 0;
+    }
+    .profile__submit {
+        margin: 210px auto 0;
+    }
+}
+@media (max-width: 400px) {
+    .profile__form {
+        padding: 70px 0 40px;
+    }
+    .profile__input-box {
+        width: 260px;
+    }
+    .profile__inputs {
+        margin: 80px auto 0;
+    }
+    .profile__submit {
+        margin: 379px auto 0;
+    }
 }
