@@ -90,6 +90,9 @@
 }
 
 @media (max-width: 400px) {
+    .techs {
+        background-color: #FFF;
+    }
     .techs__content{
         max-width: 320px;
         padding: 70px 18px;

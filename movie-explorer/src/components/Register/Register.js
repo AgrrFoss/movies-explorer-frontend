@@ -9,11 +9,11 @@ function Register () {
             <form className='register__form'>
                 <h2 className='register__title'>Добро пожаловать!</h2>
                 <label className='register__label' for='name'>Имя</label>
-                <input className='register__input' id='name'/>
+                <input className='register__input' id='name' required/>
                 <label className='register__label' for='email'>E-mail</label>
-                <input className='register__input register__input_valid' id='email'/>
+                <input className='register__input register__input_valid' id='email' required/>
                 <label className='register__label' for='password'>Пароль</label>
-                <input className='register__input register__input_invalid' id='password'/>
+                <input className='register__input register__input_invalid' id='password' required/>
                 <span className='register__input-error'>Что-то пошло не так...</span>
                 <button type='submit' className='register__submit'>Зарегистрироваться</button>
                 <p className='register__text'>Уже зарегистрированы?

@@ -131,6 +131,19 @@
         color: #A0A0A0;
     }
 }
+@media (max-width: 500px) {
+    .about-me {
+        padding: 0 14px;
+    }
+    .about-me__name{
+        font-size: 35px;
+    }
+    .about-me__photo{
+        max-width: 250px;
+        max-height: 300px;
+        border-radius: 10px;
+    }
+}
 @media (max-width: 400px) {
     .about-me {
         padding: 0 14px;

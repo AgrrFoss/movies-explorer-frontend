@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 .card__favorite_active {
-    background: #2BE080 url(../../images/icon_flag.png) no-repeat center;
+    background: #2BE080 url(../../images/icon_flag.svg) no-repeat center;
 }
 
 .card__delete {

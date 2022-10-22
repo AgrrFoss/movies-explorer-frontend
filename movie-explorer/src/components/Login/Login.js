@@ -9,9 +9,9 @@ function Login () {
             <form className='login__form'>
                 <h2 className='login__title'>Рады видеть!</h2>
                 <label className='login__label' for='email'>E-mail</label>
-                <input className='login__input' id='email'/>
+                <input className='login__input' id='email' required/>
                 <label className='login__label' for='password'>Пароль</label>
-                <input className='login__input' id='password'/>
+                <input className='login__input' id='password' required/>
                 <button type='submit' className='login__submit'>Войти</button>
                 <p className='login__text'>Ещё не зарегистрированы?
                 <Link to='/signup' className='login__link'>Регистрация</Link>

@@ -43,6 +43,11 @@
     font-size: 14px;
     line-height: 1.2;
     outline: none;
+    transition: border .5s linear;
+}
+.login__input:focus{
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
 }
 .login__submit {
     margin: 128px 0 0;
@@ -80,4 +85,31 @@
 }
 .login__link:hover {
     color: #A0A0A0;
+}
+@media (max-width: 768px) {
+    .login {
+        padding: 232px 10px;
+    }
+    .login__submit {
+        margin: 134px 0 0;
+    }
+}
+@media (max-width: 400px) {
+    .login {
+        padding: 56px 10px 30px;
+        max-width: 260px;
+    }
+    .login__logo {
+        align-self: center;
+    }
+    .login__form {
+        margin: 50px auto 0;
+    }
+    .login__title {
+        text-align: center;
+        margin: 0 0 56px;
+    }
+    .login__submit {
+        margin: 222px 0 0;
+    }
 }

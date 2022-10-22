@@ -3,6 +3,12 @@ import './Menu.css'
 import { Switch, Route, Link, NavLink } from 'react-router-dom';
 
 function Menu () {
+const [menuIsOpen, setMenuIsOpen] = React.useState(false);
+
+function switchMobileMenu () {
+    setMenuIsOpen(!menuIsOpen);
+}
+
     return (
         <Switch>
             <Route exact path='/'>
@@ -20,10 +26,10 @@ function Menu () {
                         </div>
                         <Link to='/profile' className='menu-desc__profile'>Аккаунт</Link>
                     </div>
-                    <button className='menu-mobile__button'/>
-                    <div className='menu-mobile'>
+                    <button className='menu-mobile__button' onClick={switchMobileMenu}/>
+                    <div className={menuIsOpen ? 'menu-mobile_open' : 'menu-mobile'}>
                         <div className='menu-mobile__container'>
-                            <button className='menu-mobile__close'/>
+                            <button className='menu-mobile__close' onClick={switchMobileMenu}/>
                             <div className='menu-mobile__nav'>
                                 <NavLink exact to='/' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Главная</NavLink>
                                 <NavLink to='/movies' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Фильмы</NavLink>
