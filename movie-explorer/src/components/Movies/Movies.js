@@ -12,7 +12,7 @@ function Movies () {
             <main className='movies'>
                 <SearchForm/>
                 <MoviesCardList/>
-                <button className='movies__still'>Ещё</button>
+                <button className='movies__still' type='button'>Ещё</button>
             </main>
             <Footer/>
         </div>

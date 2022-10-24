@@ -34,7 +34,7 @@ function Profile () {
                         </div>
                     </fieldset>
                     <button type='submit' className='profile__submit'>Редактировать</button>
-                    <button className='profile__exit'>Выйти из аккаунта</button>
+                    <button type='button' className='profile__exit'>Выйти из аккаунта</button>
                 </form>
             </main>
         </div>

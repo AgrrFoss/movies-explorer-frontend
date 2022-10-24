@@ -29,7 +29,7 @@ function switchMobileMenu () {
                     <button className='menu-mobile__button' onClick={switchMobileMenu}/>
                     <div className={menuIsOpen ? 'menu-mobile_open' : 'menu-mobile'}>
                         <div className='menu-mobile__container'>
-                            <button className='menu-mobile__close' onClick={switchMobileMenu}/>
+                            <button className='menu-mobile__close' type='button' onClick={switchMobileMenu}/>
                             <div className='menu-mobile__nav'>
                                 <NavLink exact to='/' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Главная</NavLink>
                                 <NavLink to='/movies' className='menu-mobile__link' activeClassName='menu-mobile__link_active'>Фильмы</NavLink>

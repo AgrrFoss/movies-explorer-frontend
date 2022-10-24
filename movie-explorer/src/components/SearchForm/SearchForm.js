@@ -7,7 +7,7 @@ function SearchForm () {
     return (
         <section className='search'>
             <div className='search__block'>
-                <div className='search__form'>
+                <form className='search__form'>
                     <img className='search__icon'
                     alt='иконка поиска'
                     src={iconPath}/>
@@ -17,8 +17,8 @@ function SearchForm () {
                     placeholder='Фильм'
                     required
                     />
-                    <button className='search__button'/>
-                </div>
+                    <button type='submit' className='search__button'/>
+                </form>
                 <FilterCheckbox/>
             </div>
         </section>

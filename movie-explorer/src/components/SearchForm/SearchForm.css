@@ -26,12 +26,17 @@
     height: 22px;
 }
 .search__input {
+    height: 100%;
     width: 90%;
     padding: 0 16px;
     border: none;
     background-color: #F9F9F9;
     outline: none;
     flex-shrink: 4;
+}
+.search__input:focus {
+  border-radius: 10px;
+  border: 1px rgb(157, 157, 157) solid;
 }
 .search__button {
     align-self: end;

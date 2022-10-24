@@ -19,7 +19,6 @@ function Techs () {
                     <li className='techs__tech'>GIT</li>
                     <li className='techs__tech'>Express.js</li>
                     <li className='techs__tech'>MongoDB</li>
-                
                 </ul>
             </div>
         </section>

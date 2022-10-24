@@ -16,10 +16,6 @@ function MoviesCard (props) {
             }
         }
     }
-function clog () {
-    console.log(itIsSaved)
-};
-clog();
    // const cardLikeButtonClassName = (`${cardIsFavorite ? 'card__favorite card__favorite_active' : 'card__favorite'}`);
 
     return (
@@ -29,7 +25,7 @@ clog();
                     <h3 className='card__name'>Название ленты</h3>
                     <p className='card__duration'> 1 час 22 минуты</p>
                 </div>
-                <button className={cardLikeButtonClassName()}/>
+                <button type='button' className={cardLikeButtonClassName()}/>
             </div>
             <img className='card__image'
             src={imagePath}
