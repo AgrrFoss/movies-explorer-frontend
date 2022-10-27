@@ -90,7 +90,9 @@
     .search__input {
         width: 90%;
         padding: 25px 19px;
+        box-sizing: border-box;
         border: none;
+        border-radius: 9px;
         background-color: #F9F9F9;
         outline: none;
         flex-shrink: 4;

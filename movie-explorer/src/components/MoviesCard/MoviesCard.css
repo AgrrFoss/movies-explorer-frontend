@@ -1,9 +1,11 @@
 .card{
     max-width: 364px;
+    max-height: 99%;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     transition: transform .2s linear;
 }
 .card:hover{
+    max-height: 98%;
     transform: scale(1.03);
     cursor: pointer;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
@@ -32,7 +34,7 @@
     width: 30px;
     height: 30px;
     border: none;
-    margin: 19px 0 19px;
+    margin: 0;
     transition: transform 0.5s linear, box-shadow 0.3s ease-in-out;
 }
 .card__favorite:hover {
