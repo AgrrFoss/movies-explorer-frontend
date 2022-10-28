@@ -6,9 +6,39 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import Page404 from '../Page404/Page404'
+import Page404 from '../Page404/Page404';
+import ProtectedRoute from '../ProtectedRoute';
+//import moviesApi from '../../utils/moviesApi';
 
 function App() {
+    const [loggedIn, setLoggedIn] = React.useState(true);
+
+/*
+
+    const [movies, setMovies] = React.useState([]);
+
+    React.useEffect(()=> {
+        Promise.all ([moviesApi.getMovies()])
+        .then ((res) => {
+            setMovies(res);
+        }
+        )
+        .catch(err => {
+            console.log(err);
+        });
+    }, []);
+
+    React.useEffect(()=> {
+        moviesApi.getMovies()
+        .then ((res) => {
+            setMovies(res);
+        }
+        )
+        .catch(err => {
+            console.log(err);
+        });
+    }, []);
+*/
 return (
     <div className='App'>
         <div className='page'>
@@ -16,15 +46,21 @@ return (
                 <Route exact path='/'>
                     <Main/>
                 </Route>
-                <Route path='/movies'>
-                    <Movies/>
-                </Route>
-                <Route path='/saved-movies'>
-                    <SavedMovies/>
-                </Route>
-                <Route path='/profile'>
-                    <Profile/>
-                </Route>
+                <ProtectedRoute
+                    path='/movies'
+                    loggedIn={loggedIn}
+                    component={Movies}
+                />
+                <ProtectedRoute
+                    path='/saved-movies'
+                    loggedIn={loggedIn}
+                    component={SavedMovies}
+                />
+                <ProtectedRoute
+                    path='/profile'
+                    loggedIn={loggedIn}
+                    component={Profile}
+                />
                 <Route path='/signup'>
                     <Register/>
                 </Route>
