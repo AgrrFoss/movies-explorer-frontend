@@ -1,0 +1,78 @@
+.card{
+    max-width: 364px;
+    max-height: 99%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    transition: transform .2s linear;
+}
+.card:hover{
+    max-height: 98%;
+    transform: scale(1.03);
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+.card__info-block{
+    padding: 14px 14px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.card__name{
+    margin: 0;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.2;
+}
+.card__duration{
+    margin: 9px 0 0;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #A0A0A0;
+}
+.card__favorite {
+    background: #F9F9F9 url(../../images/icon_flag.svg) no-repeat center;
+    border-radius: 36px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    margin: 0;
+    transition: transform 0.5s linear, box-shadow 0.3s ease-in-out;
+}
+.card__favorite:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0px 3px rgba(43, 224, 128, 1);
+    cursor: pointer;
+}
+.card__favorite_active {
+    background: #2BE080 url(../../images/icon_flag.svg) no-repeat center;
+}
+
+.card__delete {
+    background: #F9F9F9 url(../../images/icon__cross.svg) no-repeat center;    border-radius: 36px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    margin: 19px 0 19px;
+    transition: transform 0.5s linear, box-shadow 0.3s ease-in-out;
+}
+.card__delete:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0px 3px rgba(43, 224, 128, 1);
+    cursor: pointer;
+}
+.card__image {
+    margin: 14px 0 0;
+    max-width: 100%;
+    max-height: 203px;
+}
+
+@media (max-width: 768px) {
+    .card{
+        max-width: 339px;
+    }
+    
+}
+@media (max-width: 400px) {
+    .card{
+        max-width: 300px;
+    }
+}

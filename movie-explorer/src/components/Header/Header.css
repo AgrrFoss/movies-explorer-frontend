@@ -1,0 +1,32 @@
+.header{
+    margin: auto;
+    max-width: 1280px;
+    box-sizing: border-box;
+    padding: 18px 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__logo {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    background: url(../../images/logo.svg) no-repeat center;
+    transition: transform 0.2s linear ;
+}
+.header__logo:hover {
+    transform: scale(1.1);
+}
+@media (max-width: 780px) {
+    .header{
+        max-width: 768px;
+        padding: 18px 30px;
+    }
+}
+@media (max-width: 400px) {
+    .header{
+        max-width: 320px;
+        padding: 18px 14px;
+    }
+}

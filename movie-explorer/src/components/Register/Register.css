@@ -1,0 +1,128 @@
+.register {
+    padding: 70px 10px;
+    max-width: 396px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.register__logo {
+    width: 38px;
+    height: 38px;
+    background: url(../../images/logo.svg) no-repeat center;
+    transition: transform .5s linear;
+}
+.register__logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.register__form {
+    width: 100%;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+}
+.register__title {
+    text-align: left;
+    margin: 0 0 16px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+}
+.register__label {
+    margin: 24px 0 0;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #A0A0A0;
+}
+.register__input {
+    padding: 5px 0 10px;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #E8E8E8;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    outline: none;
+    transition: border .5s linear;
+}
+.register__input:focus{
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+}
+.register__input_valid {
+    border-bottom: 1px solid #2BE080;
+}
+.register__input_invalid {
+    color: #EE3465;
+}
+.register__input-error {
+    margin: 6px 0 0;
+    color: #EE3465;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+}
+.register__submit {
+    margin: 128px 0 0;
+    width: 100%;
+    padding: 13px 0 15px;
+    border: none;
+    border-radius: 3px;
+    color: #FFFFFF;
+    background-color: #2BE080;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    transition: transform .5s linear;
+}
+.register__submit:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.register__text {
+    text-align: center;
+    margin: 16px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+}
+.register__link {
+    margin: 0 0 0 6px;
+    text-decoration: none;
+    color: #2BE080;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    transition: color .5s linear;
+}
+.register__link:hover {
+    color: #A0A0A0;
+}
+@media (max-width: 768px) {
+    .register {
+        padding: 232px 10px;
+    }
+    .register__submit {
+        margin: 134px 0 0;
+    }
+}
+@media (max-width: 400px) {
+    .register {
+        padding: 56px 10px 30px;
+        max-width: 260px;
+    }
+    .register__logo {
+        align-self: center;
+    }
+    .register__form {
+        margin: 50px auto 0;
+    }
+    .register__title {
+        text-align: center;
+        margin: 0 0 56px;
+    }
+    .register__submit {
+        margin: 222px 0 0;
+    }
+}

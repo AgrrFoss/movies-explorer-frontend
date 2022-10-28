@@ -1,0 +1,115 @@
+.login {
+    padding: 70px 10px;
+    max-width: 396px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.login__logo {
+    width: 38px;
+    height: 38px;
+    background: url(../../images/logo.svg) no-repeat center;
+    transition: transform .5s linear;
+}
+.login__logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.login__form {
+    width: 100%;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+}
+.login__title {
+    text-align: left;
+    margin: 0 0 40px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.2;
+}
+.login__label {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #A0A0A0;
+}
+.login__input {
+    padding: 5px 0 10px;
+    margin: 0 0 24px;
+    border: none;
+    border-bottom: 1px solid #E8E8E8;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    outline: none;
+    transition: border .5s linear;
+}
+.login__input:focus{
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+}
+.login__submit {
+    margin: 128px 0 0;
+    width: 100%;
+    padding: 13px 0 15px;
+    border: none;
+    border-radius: 3px;
+    color: #FFFFFF;
+    background-color: #2BE080;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    transition: transform .5s linear;
+}
+.login__submit:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.login__text {
+    text-align: center;
+    margin: 16px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+}
+.login__link {
+    margin: 0 0 0 6px;
+    text-decoration: none;
+    color: #2BE080;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    transition: color .5s linear;
+}
+.login__link:hover {
+    color: #A0A0A0;
+}
+@media (max-width: 768px) {
+    .login {
+        padding: 232px 10px;
+    }
+    .login__submit {
+        margin: 134px 0 0;
+    }
+}
+@media (max-width: 400px) {
+    .login {
+        padding: 56px 10px 30px;
+        max-width: 260px;
+    }
+    .login__logo {
+        align-self: center;
+    }
+    .login__form {
+        margin: 50px auto 0;
+    }
+    .login__title {
+        text-align: center;
+        margin: 0 0 56px;
+    }
+    .login__submit {
+        margin: 222px 0 0;
+    }
+}
