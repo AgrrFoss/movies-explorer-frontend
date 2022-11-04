@@ -25,7 +25,6 @@ function App() {
                 const [userInfo, resSavedMovies] = res;
                 setCurrentUser(userInfo);
                 setArrSavedMovies(resSavedMovies);
-                console.log(resSavedMovies[2])
             })
             .catch((res) => {
                 console.log(res)
@@ -48,11 +47,42 @@ function App() {
     }, [])
     
 // ...............Функции сохранения и удаления карточек.......
-    function handleLikeMovies () {
-
+/** Постановка и удаление лайка.
+ * @param {*} movie Принимает на вход карточку из массива,
+ * в виде доступном для записи на сервер.
+ * Проверяет наличие карточки с таким movieId в массиве arrSavedMovies
+ * Добавляет новую карточку в стейт
+ */
+    function handleLikeMovie (movie) {
+        const isLiked = arrSavedMovies.some((i) => 
+           i.movieId === movie.movieId
+           );
+        if (!isLiked) {
+            mainApi.postSavedMovie(movie)
+            .then((res) => {
+                const newArr = Object.assign([], arrSavedMovies);
+                newArr.push(res);
+                setArrSavedMovies(newArr);
+                console.log(newArr)
+            })
+            .catch((res) => {
+                console.log(res);
+            })
+        } else {
+            handleDeleteMovie (movie)
+        }
     }
-    function handleDeleteMovies () {
-        
+    function handleDeleteMovie (movie) {
+        mainApi.deleteSavedMovie(movie.movieId)
+            .then((res) => {
+                console.log(res);
+                const newArr = arrSavedMovies.filter((i) => i.movieId !== movie.movieId);
+                setArrSavedMovies(newArr);
+                console.log(newArr)
+            })
+            .catch((res) => {
+                console.log(res);
+            })
     }
 
 //................Функции авторизации.........................
@@ -132,14 +162,15 @@ return (
                         path='/movies'
                         component={Movies}
                         loggedIn={loggedIn}
-                        handleLike={handleLikeMovies}
+                        arrSavedMovies={arrSavedMovies}
+                        handleLikeMovie={handleLikeMovie}
                     />
                     <ProtectedRoute
                         path='/saved-movies'
                         component={SavedMovies}
                         loggedIn={loggedIn}
                         arrSavedMovies={arrSavedMovies}
-                        handleDelete={handleDeleteMovies}
+                        deleteMovie={handleDeleteMovie}
                     />
                     <ProtectedRoute
                         path='/profile'

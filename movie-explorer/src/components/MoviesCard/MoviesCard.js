@@ -5,24 +5,19 @@ import {moviesImageUrl} from '../../utils/constants'
 
 
 function MoviesCard (props) {
-    const [isLiked, setIsLiked] = React.useState(false);
     const newMovie = Object.assign({}, props.movie);
     newMovie.image = `${moviesImageUrl}${props.movie.image.url}`;
     newMovie.thumbnail = `${moviesImageUrl}${props.movie.image.url}`;
-    newMovie.movieId = `${props.movie.id}`;
+    newMovie.movieId = props.movie.id;
     delete newMovie.id;
     delete newMovie.created_at;
     delete newMovie.updated_at;
-
+    const isLiked = props.arrSavedMovies.some((i) => i.movieId === props.movie.id);
+    
     function handleLike () {
-        if (isLiked === false) {
-            props.setLike(newMovie);
-            setIsLiked(!isLiked);
-        } else {
-            props.deleteLike(newMovie);
-            setIsLiked(!isLiked);
-        }
+        props.handleLikeMovie(newMovie)
     }
+   
     function handleDeleteMovie () {
         props.deleteMovie(props.movie)
     }

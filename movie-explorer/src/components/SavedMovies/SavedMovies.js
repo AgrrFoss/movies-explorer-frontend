@@ -4,22 +4,8 @@ import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import moviesApi from '../../utils/moviesApi';
-import mainApi from '../../utils/mainApi';
 
-function SavedMovies ({loggedIn, arrSavedMovies}) {
-//Временная реализация отображения карточек в savedMovies
-    
-    function deleteMovie (movie) {
-        mainApi.deleteSavedMovie(movie.movieId)
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((res) => {
-            console.log(res);
-        })
-    }
-//......................................................
+function SavedMovies ({loggedIn, deleteMovie, arrSavedMovies}) {
 
 
     return (
@@ -29,6 +15,7 @@ function SavedMovies ({loggedIn, arrSavedMovies}) {
                 <SearchForm/>
                 <MoviesCardList
                 movies={arrSavedMovies}
+                arrSavedMovies={arrSavedMovies}
                 deleteMovie={deleteMovie}/>
             </main>
             <Footer/>

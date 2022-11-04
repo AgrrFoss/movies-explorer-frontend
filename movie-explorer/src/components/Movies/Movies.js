@@ -9,9 +9,12 @@ import mainApi from '../../utils/mainApi';
 
 function Movies (props) {
     const [movies, setMovies] = React.useState([]);
-
+    const [request, setRequest] = React.useState('');
+    const [shorty, setShorty] = React.useState(false);
+    const [searchError, setSearchError] = React.useState(false);
     
     React.useEffect(() => {
+        if (request) {
         moviesApi.getMovies()
         .then ((res) => {
             setMovies(res);
@@ -20,48 +23,32 @@ function Movies (props) {
         .catch(err => {
             console.log(err);
         });
-    }, []);
-
-    /** Функция отправляет на сервер POST запрос с данными карточки, в ответ
-     * получает данные карточки сохраненные на сервере
-     * @param {*} movie данные карточки.
-     */
-    function setLike (movie) {
-        console.log(movie)
-        mainApi.postSavedMovie(movie)
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((res) => {
-            console.log(res);
-        })
     }
+    }, [request]);
 
-    /** Функция отправляет на сервер DELETE запрос с данными карточки, в ответ
-     * получает сообщение что карточка удалена.
-     * @param {*} movie данные карточки.
-     */
-     function deleteLike (movie) {
-        console.log(movie)
-        mainApi.deleteSavedMovie(movie.movieId)
-        
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((res) => {
-                console.log(res);
-            })
+    function filterMovies() {
+        const   resultArrMovies = movies.filter((i) => i.nameRU=== request)
+        return resultArrMovies
+    }
+    const filteredMovies = movies.filter((movie) => {
+        return movie.nameRU.toLowerCase().includes(request.toLowerCase())
+    })
+
+    console.log(filterMovies())
+    function handleSearchForm(value) {
+        setRequest(value);
     }
 
     return (
         <div>
             <Header loggedIn={props.loggedIn}/>
             <main className='movies'>
-                <SearchForm/>
+                <SearchForm
+                handleSearchForm={handleSearchForm}/>
                 <MoviesCardList
-                    movies={movies}
-                    setLike={setLike}
-                    deleteLike={deleteLike}
+                    movies={filteredMovies}
+                    arrSavedMovies={props.arrSavedMovies}//Массив сохраненных карточек
+                    handleLikeMovie={props.handleLikeMovie}// Функция обработки лайка
                     />
                 <button className='movies__still' type='button'>Ещё</button>
             </main>

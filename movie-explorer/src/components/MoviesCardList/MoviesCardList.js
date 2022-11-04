@@ -12,12 +12,14 @@ function MoviesCardList (props) {
                 if (item.length !== 0) {
                 return(
                     <MoviesCard
-                    key={item.id}
+                    key={item.id || item.movieId}
                     movie={item}
-                    setLike={props.setLike}
-                    deleteLike={props.deleteLike}
+                    arrSavedMovies={props.arrSavedMovies}//Массив сохраненных карточек
+                    handleLikeMovie={props.handleLikeMovie}
+                    deleteMovie={props.deleteMovie}// Функция обработки лайка
+            //        setLike={props.setLike}
+            //        deleteLike={props.deleteLike}
                     itIsSaved={itIsSaved}
-                    deleteMovie={props.deleteMovie}
                     />
                 )} else {
                     return(
