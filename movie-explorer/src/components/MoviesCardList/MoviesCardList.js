@@ -14,9 +14,10 @@ function MoviesCardList (props) {
                     <MoviesCard
                     key={item.id}
                     movie={item}
-                    doLiked={props.doLiked}
-                    doUnLiked={props.doUnLiked}
+                    setLike={props.setLike}
+                    deleteLike={props.deleteLike}
                     itIsSaved={itIsSaved}
+                    deleteMovie={props.deleteMovie}
                     />
                 )} else {
                     return(

@@ -1,8 +1,11 @@
+import {mainApiUrl, localApiUrl} from './constants' 
+
 class MainApi {
     constructor (url) {
         this._url = url;
         this._headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${localStorage.getItem('token')}`
         }
     }
 
@@ -10,8 +13,38 @@ class MainApi {
         if (res.ok) {
             return res.json()
         }
-        return Promise.reject(`Ошибка ${res.status}, ${res}`);
+        // return Promise.reject(`Ошибка ${res.status}, ${res}`);
+        return Promise.reject(res);
     }
+// Регистрация и авторизация
+
+    register (name, email, password) {
+        return fetch(`${this._url}/signup`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({ email: email, name: name, password: password })
+        })
+        .then(this._checkResponse)
+    }
+
+    login (email, password) {
+        return fetch(`${this._url}/signin`, {
+            method: 'POST',
+            headers: this._headers,
+            credentials: 'include',
+            body: JSON.stringify({ email: email, password: password })
+        })
+        .then(this._checkResponse);
+    }
+    logOut () {
+        return fetch(`${this._url}/signout`, {
+            method: 'POST',
+            headers: this._headers,
+            credentials: 'include',
+        })
+        .then(this._checkResponse)
+    }
+
 
 // Получение и обновление инфрмации о пользователе
     getUserInfo() {
@@ -63,5 +96,5 @@ class MainApi {
 
 }
 
-const mainApi = new MainApi('');
+const mainApi = new MainApi(localApiUrl);
 export default mainApi;
