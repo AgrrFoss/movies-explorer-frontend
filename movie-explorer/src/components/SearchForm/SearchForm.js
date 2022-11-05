@@ -16,6 +16,9 @@ function SearchForm (props) {
             props.handleSearchForm(value)
         }
     }
+    function handleCheckBox() {
+        props.handleCheckBox()
+    }
 
     return (
         <section className='search'>
@@ -33,7 +36,7 @@ function SearchForm (props) {
                     />
                     <button type='submit' className='search__button'/>
                 </form>
-                <FilterCheckbox/>
+                <FilterCheckbox handleCheckBox={handleCheckBox}/>
             </div>
             {clearForm && <span>Нужно ввести ключевое слово.</span>}
         </section>

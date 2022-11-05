@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import Main from '../Main/Main';
+import './App.css'
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
@@ -152,7 +153,6 @@ function App() {
 return (
     <CurrentUserContext.Provider value={currentUser}>
         <div className='App'>
-            <div className='page'>
                 <Switch>
                     <Route exact path='/'>
                         <Main
@@ -190,7 +190,6 @@ return (
                         <Page404/>
                     </Route>
                 </Switch>
-            </div>
         </div>
     </CurrentUserContext.Provider>
 )
