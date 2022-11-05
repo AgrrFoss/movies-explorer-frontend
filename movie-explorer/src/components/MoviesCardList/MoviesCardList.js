@@ -5,11 +5,17 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 function MoviesCardList (props) {
 
     const itIsSaved=props.itIsSaved;
-
+    console.log(props.movies)
+    if (props.movies.length === 0) {
+        return(
+            <main className='moviesCardList'>
+                <p>Ни одного фильма не найдено.</p>
+            </main>
+        )
+    } else {
     return (
         <main className='moviesCardList'>
             {props.movies.map((item) => {
-                if (item.length !== 0) {
                 return(
                     <MoviesCard
                     key={item.id || item.movieId}
@@ -17,18 +23,14 @@ function MoviesCardList (props) {
                     arrSavedMovies={props.arrSavedMovies}//Массив сохраненных карточек
                     handleLikeMovie={props.handleLikeMovie}
                     deleteMovie={props.deleteMovie}// Функция обработки лайка
-            //        setLike={props.setLike}
-            //        deleteLike={props.deleteLike}
                     itIsSaved={itIsSaved}
                     />
-                )} else {
-                    return(
-                    <p>Ни одного фильма не найдено.</p>
-                )}
+                )
             }
             )}
         </main>
     );
+    }
 };
 
 export default MoviesCardList;

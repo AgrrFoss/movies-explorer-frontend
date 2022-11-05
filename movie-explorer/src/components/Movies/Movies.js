@@ -19,7 +19,30 @@ function Movies (props) {
     const [pageWidth, setPagewidth] = React.useState(document.documentElement.scrollWidth); 
     window.onresize = resetPageSize;
 
-    
+    React.useEffect(() => {
+        if (request) {
+            setPreloaderVisible(true)
+        moviesApi.getMovies()
+        .then ((res) => {
+            setPreloaderVisible(false);
+            setMovies(res);
+            resetQuantityMovies()
+            setSearchError('');
+            setPagewidth(document.documentElement.scrollWidth);
+        }
+        )
+        .catch(err => {
+            console.log(err);
+            setSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.Подождите немного и попробуйте ещё раз')
+            setPreloaderVisible(false);
+        })
+        .finally(() => {
+            setPreloaderVisible(false)
+        })
+    }
+    }, [request, pageWidth]);
+
+    /*
     React.useEffect(() => {
         if (request) {
         moviesApi.getMovies()
@@ -41,7 +64,7 @@ function Movies (props) {
         })
     }
     }, [request, pageWidth]);
-
+*/
 
     function resetQuantityMovies() {
         if (pageWidth > 768) {
