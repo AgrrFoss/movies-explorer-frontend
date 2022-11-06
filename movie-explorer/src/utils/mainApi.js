@@ -96,5 +96,5 @@ class MainApi {
 
 }
 
-const mainApi = new MainApi(localApiUrl);
+const mainApi = new MainApi(mainApiUrl);
 export default mainApi;
