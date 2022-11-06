@@ -5,6 +5,8 @@ import MoviesCard from '../MoviesCard/MoviesCard'
 function MoviesCardList (props) {
 
     const itIsSaved=props.itIsSaved;
+
+    console.log(props.movies)
     if (props.movies.length === 0) {
         return(
             <main className='moviesCardList'>

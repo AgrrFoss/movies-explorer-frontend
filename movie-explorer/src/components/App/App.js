@@ -37,6 +37,7 @@ function App() {
     React.useEffect(() => {
         mainApi.getUserInfo()
         .then((res) => {
+            console.log(res)
             if(!res.hasOwnProperty('message')) {
                 setLoggedIn(true);
                 history.push('/');
@@ -140,15 +141,10 @@ function App() {
             localStorage.removeItem('token');
             history.push('/');
             setAuthError({})
+            localStorage.clear();
         })
     }
-    ////////////////////////////////////////////////////////////////
-    function clog(atr) {
-        console.log(atr);
-    }
-  //  clog(currentUser)
-    ////////////////////////////////////////////////////////////////
-
+    console.log(currentUser)
 
 return (
     <CurrentUserContext.Provider value={currentUser}>

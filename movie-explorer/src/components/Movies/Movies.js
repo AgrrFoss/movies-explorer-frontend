@@ -116,7 +116,6 @@ function Movies (props) {
     function handleCheckBox() {
         setShorty(!shorty)
     }
-    console.log(localMovies, localShorty)
 
     return (
         <div className='page'>
@@ -130,7 +129,7 @@ function Movies (props) {
                     savedRequest={localRequest}/>
                     {preloaderVisible && <Preloader/>}
                     <span>{searchError}</span>
-                    {request && 
+                    {localMovies && 
                     <MoviesCardList
                         movies={localMovies.slice(0, quantityMovies)}
                         arrSavedMovies={props.arrSavedMovies}//Массив сохраненных карточек

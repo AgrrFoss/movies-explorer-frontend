@@ -19,6 +19,7 @@ class MainApi {
 // Регистрация и авторизация
 
     register (name, email, password) {
+        console.log(name, email, password)
         return fetch(`${this._url}/signup`, {
             method: 'POST',
             headers: this._headers,
@@ -28,6 +29,7 @@ class MainApi {
     }
 
     login (email, password) {
+        console.log(email, password)
         return fetch(`${this._url}/signin`, {
             method: 'POST',
             headers: this._headers,
@@ -96,5 +98,5 @@ class MainApi {
 
 }
 
-const mainApi = new MainApi(mainApiUrl);
+const mainApi = new MainApi(mainApiUrl);//для теста можно использовать localApiUrl, с запущенным на локальной машине сервером.
 export default mainApi;
