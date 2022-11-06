@@ -20,8 +20,7 @@ function Profile ({loggedIn, handleLogOut, handleEditProfile, authError}) {
 
     const onSubmit = (data) => {
         handleEditProfile(data);
-       // setNewEmail(data.email);
-       // setNewName(data.name);
+        reset({})
     }
 
     const {

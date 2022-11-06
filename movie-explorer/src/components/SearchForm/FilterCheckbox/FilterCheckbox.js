@@ -10,7 +10,7 @@ function FilterCheckbox (props) {
     return (
         <div className='checkbox'>
             <label className='checkbox__label'>
-                <input type='checkbox' onChange={switchCheckBox} className='checkbox__input'/>
+                <input type='checkbox' checked={props.checked} onChange={switchCheckBox} className='checkbox__input'/>
                 <span className='checkbox__switch'>
                     <span className='checkbox__level'/>
                 </span>

@@ -181,10 +181,11 @@ return (
                         authError={authError}
                     />
                     <Route path='/signup'>
-                        <Register handleRegister={handleRegister} authError={authError}/>
+                        {() => loggedIn ? <Redirect to='./'/> : <Register handleRegister={handleRegister} authError={authError}/>}
                     </Route>
                     <Route path='/signin'>
-                        <Login handleLogin={handleLogin} authError={authError}/>
+                        {() => loggedIn ? <Redirect to='./'/> : <Login handleLogin={handleLogin} authError={authError}/>}
+                        
                     </Route>
                     <Route path='*'>
                         <Page404/>

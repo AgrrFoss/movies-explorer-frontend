@@ -4,7 +4,7 @@ import iconPath from '../../images/search_icon.svg'
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox'
 
 function SearchForm (props) {
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = React.useState(props.savedRequest);
     const [clearForm, setClearForm] = React.useState(false);
 
     function handleSearch (e) {
@@ -36,7 +36,7 @@ function SearchForm (props) {
                     />
                     <button type='submit' className='search__button'/>
                 </form>
-                <FilterCheckbox handleCheckBox={handleCheckBox}/>
+                <FilterCheckbox handleCheckBox={handleCheckBox} checked={props.checked}/>
             </div>
             {clearForm && <span>Нужно ввести ключевое слово.</span>}
         </section>
