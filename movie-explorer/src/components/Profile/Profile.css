@@ -61,6 +61,13 @@
     color: #EE3465;
     text-align: center;
 }
+.profile__success{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #2BE080;
+    text-align: center;
+}
 .profile__submit {
     margin: 220px auto 0;
     background-color: white;

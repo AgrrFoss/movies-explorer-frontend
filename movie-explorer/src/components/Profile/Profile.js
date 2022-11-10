@@ -5,13 +5,14 @@ import Header from '../Header/Header';
 import {emailRegExp, nameRegExp} from '../../utils/constants';
 import { CurrentUserContext }  from '../../contexts/currentUserContext'
 
-function Profile ({loggedIn, handleLogOut, handleEditProfile, authError}) {
+function Profile ({loggedIn, handleLogOut, handleEditProfile, authError, successUpdate}) {
     const userInfo = React.useContext(CurrentUserContext);
     const {name, email} = userInfo;
     console.log(userInfo)
 
     const [newEmail, setNewEmail] = React.useState(email);
     const [newName, setNewName] = React.useState(name);
+
 
     React.useEffect(() => {
         setNewEmail(userInfo.email);
@@ -119,6 +120,7 @@ function Profile ({loggedIn, handleLogOut, handleEditProfile, authError}) {
                         </div>
                     </fieldset>
                     {authError.status && <span className='profile__error'>{setTypeError(authError)}</span>}
+                    {successUpdate && <span className='profile__success'>Изменения сохранены</span>}
                     <button type='submit'
                             className={submitIsValid() ? 'profile__submit' : 'profile__submit profile__submit_unactive'}
                             disabled={!submitIsValid()}>Редактировать</button>

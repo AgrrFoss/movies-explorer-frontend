@@ -15,8 +15,11 @@ import mainApi from '../../utils/mainApi';
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [currentUser, setCurrentUser] = React.useState({});
-    const [authError, setAuthError] = React.useState({});
-    const [arrSavedMovies, setArrSavedMovies] = React.useState([])
+    const [loginError, setLoginError] = React.useState({});
+    const [registerError, setRegisterError] = React.useState({});
+    const [editProfileError, setEditProfileError] = React.useState({});
+    const [arrSavedMovies, setArrSavedMovies] = React.useState([]);
+    const [successUpdateProfile, setSuccessUpdate] = React.useState(false);
     const history = useHistory();
     /** обновляет информацию о пользователе при cмене loggedIn */
     React.useEffect(() => {
@@ -37,12 +40,15 @@ function App() {
     React.useEffect(() => {
         mainApi.getUserInfo()
         .then((res) => {
-            console.log(res)
             if(!res.hasOwnProperty('message')) {
                 setLoggedIn(true);
-                history.push('/');
+                //history.push('/');
+                setRegisterError('');
+                setLoginError('')
             } else {
                 setLoggedIn(false);
+                setCurrentUser({});
+                localStorage.clear();
                 history.push('/signin');
             }
         })
@@ -69,6 +75,9 @@ function App() {
             })
             .catch((res) => {
                 console.log(res);
+                if (res.status === 401) {
+                    handleLogOut()
+                }
             })
         } else {
             handleDeleteMovie (movie)
@@ -84,6 +93,9 @@ function App() {
             })
             .catch((res) => {
                 console.log(res);
+                if (res.status === 401) {
+                    handleLogOut()
+                }
             })
     }
 
@@ -92,23 +104,29 @@ function App() {
         mainApi.register(name, email, password)
         .then((res) => {
             handleLogin({email: email, password: password});
+            setRegisterError('')
         })
         .catch((res) => {
             console.log(res)
-            showError(res);
+            setRegisterError(res);
+            setTimeout(() => {
+                setRegisterError('')
+            }, 3000)
     })
     }
     function handleLogin ({email, password}) {
         mainApi.login(email, password)
         .then((res) => {
-            localStorage.setItem('token', res.token)
             setLoggedIn(true);
             history.push('/movies');
-            setAuthError({});
+            setLoginError('');
         })
         .catch((res) => {
             console.log(res)
-            showError(res);
+            setLoginError(res);
+            setTimeout(() => {
+                setLoginError('')
+            }, 3000)
     })
     }
     function handleEditProfile (userObj) {
@@ -116,22 +134,21 @@ function App() {
         .then((res) => {
             console.log(res)
             setCurrentUser(res)
-            setAuthError({});
+            setEditProfileError({});
+            setSuccessUpdate(true);
+            hideMessage()
         })
         .catch((res) => {
             console.log(res)
-            showError(res)
+            setEditProfileError(res)
         });
     }
-    function showError (res) {
-        if (!res.ok) {
-            console.log(res);
-            setAuthError(res)
-            return res;
-        } else {
-            return
-        }
+    function hideMessage() {
+        setTimeout(() => {
+            setSuccessUpdate(false)
+        }, 3000)
     }
+
     function handleLogOut () {
         mainApi.logOut()
         .then((res) => {
@@ -140,11 +157,11 @@ function App() {
             setLoggedIn(false);
             localStorage.removeItem('token');
             history.push('/');
-            setAuthError({})
+            setLoginError('');
+            setRegisterError('');
             localStorage.clear();
         })
     }
-    console.log(currentUser)
 
 return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -174,13 +191,14 @@ return (
                         component={Profile}
                         handleEditProfile={handleEditProfile}
                         handleLogOut={handleLogOut}
-                        authError={authError}
+                        authError={editProfileError}
+                        successUpdate={successUpdateProfile}
                     />
                     <Route path='/signup'>
-                        {() => loggedIn ? <Redirect to='./'/> : <Register handleRegister={handleRegister} authError={authError}/>}
+                        {() => loggedIn ? <Redirect to='./'/> : <Register handleRegister={handleRegister} authError={registerError}/>}
                     </Route>
                     <Route path='/signin'>
-                        {() => loggedIn ? <Redirect to='./'/> : <Login handleLogin={handleLogin} authError={authError}/>}
+                        {() => loggedIn ? <Redirect to='./'/> : <Login handleLogin={handleLogin} authError={loginError}/>}
                         
                     </Route>
                     <Route path='*'>

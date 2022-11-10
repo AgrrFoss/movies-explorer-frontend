@@ -4,6 +4,7 @@ import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import { SHORTTIME } from '../../utils/constants';
 
 function SavedMovies ({loggedIn, deleteMovie, arrSavedMovies}) {
     const [shorty, setShorty] = React.useState(false);
@@ -14,10 +15,10 @@ function SavedMovies ({loggedIn, deleteMovie, arrSavedMovies}) {
         const result = arrSavedMovies.filter((i) => {
                 return i.nameRU.toLowerCase().includes(request.toLowerCase())
             })
-        const resultShorty = shorty ? result.filter((i) =>i.duration <= 40 ) : result;
+        const resultShorty = shorty ? result.filter((i) =>i.duration <= SHORTTIME ) : result;
         return resultShorty
         }
-        const filterResult = shorty ? arrSavedMovies.filter((i) =>i.duration <= 40 ) : arrSavedMovies;
+        const filterResult = shorty ? arrSavedMovies.filter((i) =>i.duration <= SHORTTIME ) : arrSavedMovies;
         return filterResult;
     };
 

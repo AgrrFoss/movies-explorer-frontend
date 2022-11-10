@@ -7,8 +7,10 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import moviesApi from '../../utils/moviesApi';
 import mainApi from '../../utils/mainApi';
+import { SHORTTIME, TABLETSIZE, MOBILESIZE } from '../../utils/constants';
 
 function Movies (props) {
+    const allMovies = JSON.parse(localStorage.getItem('allMovies'));
     const localMovies = JSON.parse(localStorage.getItem('findResult'));
     const localRequest = localStorage.getItem('searchValue');
     const localShorty = JSON.parse(localStorage.getItem('checkbox'));
@@ -27,44 +29,58 @@ function Movies (props) {
         if(localMovies) {
             setMovies(localMovies)
         }
-    }, [])
-    React.useEffect(() => {
-        if (request) {
-            setPreloaderVisible(true)
-        moviesApi.getMovies()
-        .then ((res) => {
-            const searchResult = filterestMovies(request, res)
-            setPreloaderVisible(false);
-            localStorage.setItem('searchValue', request);
-            localStorage.setItem('findResult', JSON.stringify(searchResult));
-            localStorage.setItem('checkbox', shorty);
-            setMovies(searchResult);
-            resetQuantityMovies();
-            setSearchError('');
-            setPagewidth(document.documentElement.scrollWidth);
-        }
-        )
-        .catch(err => {
-            console.log(err);
-            setSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.Подождите немного и попробуйте ещё раз')
-            setPreloaderVisible(false);
-        })
-        .finally(() => {
-            setPreloaderVisible(false)
-        })
-    }
-    }, [request, pageWidth, shorty]);
+    }, []);
 
+    React.useEffect (() => {
+        if(request) {
+            setPreloaderVisible(true)
+            if(allMovies) {
+                const searchResult = filterestMovies(request, allMovies);
+                setPreloaderVisible(false);
+                localStorage.setItem('searchValue', request);
+                localStorage.setItem('findResult', JSON.stringify(searchResult));
+                localStorage.setItem('checkbox', shorty);
+                setMovies(searchResult);
+                resetQuantityMovies();
+                setSearchError('');
+                setPagewidth(document.documentElement.scrollWidth);
+            } else {
+                moviesApi.getMovies()
+                .then ((res) => {
+                    localStorage.setItem('allMovies', JSON.stringify(res))
+                    const searchResult = filterestMovies(request, res);
+                    setPreloaderVisible(false);
+                    localStorage.setItem('searchValue', request);
+                    localStorage.setItem('findResult', JSON.stringify(searchResult));
+                    localStorage.setItem('checkbox', shorty);
+                    setMovies(searchResult);
+                    resetQuantityMovies();
+                    setSearchError('');
+                    setPagewidth(document.documentElement.scrollWidth);
+                }
+                )
+                .catch(err => {
+                    console.log(err);
+                    setSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.Подождите немного и попробуйте ещё раз')
+                    setPreloaderVisible(false);
+                })
+                .finally(() => {
+                    setPreloaderVisible(false)
+                })
+            }
+        }
+    }, [request, pageWidth, shorty]);
+    
     function resetQuantityMovies() {
-        if (pageWidth > 780) {
+        if (pageWidth > TABLETSIZE) {
             setQuantityMovies(12);
             setQuantityAddMovies(3);
             return
-        } if (pageWidth >= 400 && pageWidth <= 780) {
+        } if (pageWidth >= MOBILESIZE && pageWidth <= TABLETSIZE) {
             setQuantityMovies(8);
             setQuantityAddMovies(2);
             return
-        } if (pageWidth < 400) {
+        } if (pageWidth < MOBILESIZE) {
             setQuantityMovies(5);
             setQuantityAddMovies(2);
             return
@@ -75,7 +91,7 @@ function Movies (props) {
         const result = movies.filter((i) => {
             return i.nameRU.toLowerCase().includes(request.toLowerCase())
         })
-        const resultShorty = shorty ? result.filter((i) =>i.duration <= 40 ) : result;
+        const resultShorty = shorty ? result.filter((i) =>i.duration <= SHORTTIME ) : result;
         return resultShorty;
     }
     /**Функция изменения размеров окна с задержкой 2 секунды
@@ -85,16 +101,8 @@ function Movies (props) {
             setPagewidth(document.documentElement.scrollWidth)
         }, 2000)
     }
-    /** Массив фильмов, который найден согласно запросу request
-     */
-    const filteredMovies = movies.filter((movie) => {
-        return movie.nameRU.toLowerCase().includes(request.toLowerCase())
-    })
-    /** Выбирает короткометражки, если это необходимо
-     */
-    const resultFilter = !shorty ? filteredMovies.filter((i) =>i.duration <= 40 ) : filteredMovies;
 
-    const isMoreShow = resultFilter.length > quantityMovies;//проверяет нужна-ли кнопка "Ещё"
+    const isMoreShow = localMovies?.length > quantityMovies;//проверяет нужна-ли кнопка "Ещё"
 
     /**Функция срабатывает при сабмите searchForm и задает значение
      * в стейт запроса
