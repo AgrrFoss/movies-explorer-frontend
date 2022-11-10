@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import './App.css'
 import Movies from '../Movies/Movies';
@@ -21,6 +21,7 @@ function App() {
     const [arrSavedMovies, setArrSavedMovies] = React.useState([]);
     const [successUpdateProfile, setSuccessUpdate] = React.useState(false);
     const history = useHistory();
+    const location = useLocation();
     /** обновляет информацию о пользователе при cмене loggedIn */
     React.useEffect(() => {
         if (loggedIn) {
@@ -42,7 +43,7 @@ function App() {
         .then((res) => {
             if(!res.hasOwnProperty('message')) {
                 setLoggedIn(true);
-                //history.push('/');
+                history.push(location.pathname);
                 setRegisterError('');
                 setLoginError('')
             } else {
