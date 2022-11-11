@@ -1,36 +1,81 @@
 import React from 'react';
-import imagePath from '../../images/film_image.png'
+import {  Route, Switch, useHistory } from 'react-router-dom';
 import './MoviesCard.css';
+import {moviesImageUrl} from '../../utils/constants'
+
 
 function MoviesCard (props) {
-    const cardIsFavorite = props.moviesLiked;
-    const itIsSaved = props.itIsSaved;
-    function cardLikeButtonClassName () {
-        if (itIsSaved) {
-            return 'card__delete';
-        } else {
-            if (cardIsFavorite) {
-                return 'card__favorite card__favorite_active';
-            } else {
-                return 'card__favorite'
-            }
-        }
+    const newMovie = Object.assign({}, props.movie);
+    newMovie.image = `${moviesImageUrl}${props.movie.image.url}`;
+    newMovie.thumbnail = `${moviesImageUrl}${props.movie.image.url}`;
+    newMovie.movieId = props.movie.id;
+    delete newMovie.id;
+    delete newMovie.created_at;
+    delete newMovie.updated_at;
+    const isLiked = props.arrSavedMovies.some((i) => i.movieId === props.movie.id);
+    
+    function handleLike () {
+        props.handleLikeMovie(newMovie)
     }
-   // const cardLikeButtonClassName = (`${cardIsFavorite ? 'card__favorite card__favorite_active' : 'card__favorite'}`);
+   
+    function handleDeleteMovie () {
+        props.deleteMovie(props.movie)
+    }
+
+    function formatTime (number) {
+      let time;
+      if (number <= 60) {
+        time = `${number} минут`;
+      } else {
+        let hour = Math.floor(number/60);
+        let minuts = number - hour * 60;
+        time = `${hour}ч ${minuts}м`
+      }
+      return time;
+    }
+    const cardLikeButtonClassName = (`${isLiked ? 'card__favorite card__favorite_active' : 'card__favorite'}`);
 
     return (
-        <div className='card'>
-            <div className='card__info-block'>
-                <div className='card__info'>
-                    <h3 className='card__name'>Название ленты</h3>
-                    <p className='card__duration'> 1 час 22 минуты</p>
-                </div>
-                <button type='button' className={cardLikeButtonClassName()}/>
-            </div>
-            <img className='card__image'
-            src={imagePath}
-            alt='Заставка фильма'/> 
-        </div>
+            <Switch>
+                <Route path='/movies'>
+                    <div className='card'>
+                        <div className='card__info-block'>
+                            <div className='card__info'>
+                                <h3 className='card__name'>{props.movie.nameRU}</h3>
+                                <p className='card__duration'>{formatTime(props.movie.duration)}</p>
+                            </div>
+                            <button type='button' className={cardLikeButtonClassName} onClick={handleLike}/>
+                        </div>
+                        <a className='card__link'
+                            href={props.movie.trailerLink}
+                            target='_blank'
+                            rel='noopener noreferrer'>
+                                <img className='card__image'
+                                src={`${moviesImageUrl}${props.movie.image.url}`}
+                                alt='Заставка фильма'/>
+                        </a>
+                    </div>
+                </Route>
+                <Route path='/saved-movies'>
+                    <div className='card'>
+                        <div className='card__info-block'>
+                            <div className='card__info'>
+                                <h3 className='card__name'>{props.movie.nameRU}</h3>
+                                <p className='card__duration'>{formatTime(props.movie.duration)}</p>
+                            </div>
+                            <button type='button' className='card__delete' onClick={handleDeleteMovie}/>
+                        </div>
+                        <a className='card__link'
+                            href={props.movie.trailerLink}
+                            target='_blank'
+                            rel='noopener noreferrer'>
+                                <img className='card__image'
+                                src={props.movie.image}
+                                alt='Заставка фильма'/>
+                        </a>
+                    </div>
+                </Route>
+            </Switch>
     );
 };
 

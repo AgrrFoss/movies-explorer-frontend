@@ -2,23 +2,15 @@ import React from 'react';
 import './Menu.css'
 import { Switch, Route, Link, NavLink } from 'react-router-dom';
 
-function Menu () {
+function Menu ({loggedIn}) {
 const [menuIsOpen, setMenuIsOpen] = React.useState(false);
 
 function switchMobileMenu () {
     setMenuIsOpen(!menuIsOpen);
 }
-
-    return (
-        <Switch>
-            <Route exact path='/'>
-                <div>
-                    <Link to='signup' className='menu__reg'>Регистрация</Link>
-                    <Link to='signin' className='menu__login'>Войти</Link>
-                </div>
-            </Route>
-            <Route path='/'>
-                <div className='menu'>
+    if (loggedIn) {
+        return (
+            <div className='menu'>
                     <div className='menu-desc'>
                         <div className='menu-desc__nav'>
                             <NavLink to='/movies' className='menu-desc__link' activeClassName='menu-desc__link_active'>Фильмы</NavLink>
@@ -39,9 +31,15 @@ function switchMobileMenu () {
                         </div>
                     </div>
                 </div>
-            </Route>
-        </Switch>
-    );
+        )
+    } else {
+        return(
+            <div>
+                    <Link to='signup' className='menu__reg'>Регистрация</Link>
+                    <Link to='signin' className='menu__login'>Войти</Link>
+            </div>
+        )
+    }
 };
 
 export default Menu;

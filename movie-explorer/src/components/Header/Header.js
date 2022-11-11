@@ -3,11 +3,12 @@ import './Header.css'
 import { Link } from 'react-router-dom';
 import Menu from './Menu/Menu'
 
-function Header () {
+function Header ({loggedIn}) {
     return (
         <header className='header'>
             <Link to='/' className='header__logo'/>
-            <Menu/>
+            <Menu
+            loggedIn={loggedIn}/>
         </header>
     );
 };
