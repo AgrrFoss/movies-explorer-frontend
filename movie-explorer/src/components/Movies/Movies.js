@@ -27,13 +27,14 @@ function Movies (props) {
    
     useEffect(()=> {
         if(localMovies) {
-            setMovies(localMovies)
+            const newLM = filterestMovies(localRequest, allMovies);
+            setMovies(newLM);
         }
-    }, []);
+    }, [shorty]);
 
     React.useEffect (() => {
         if(request) {
-            setPreloaderVisible(true)
+            setPreloaderVisible(true);
             if(allMovies) {
                 const searchResult = filterestMovies(request, allMovies);
                 setPreloaderVisible(false);
@@ -94,12 +95,12 @@ function Movies (props) {
         const resultShorty = shorty ? result.filter((i) =>i.duration <= SHORTTIME ) : result;
         return resultShorty;
     }
-    /**Функция изменения размеров окна с задержкой 2 секунды
+    /**Функция изменения размеров окна с задержкой 250мс
      */
      function resetPageSize () {
         setTimeout(() => {
             setPagewidth(document.documentElement.scrollWidth)
-        }, 2000)
+        }, 250)
     }
 
     const isMoreShow = localMovies?.length > quantityMovies;//проверяет нужна-ли кнопка "Ещё"
@@ -122,7 +123,7 @@ function Movies (props) {
     /** функция переключает стейт отвечающий за короткометражки.
      */
     function handleCheckBox() {
-        setShorty(!shorty)
+        setShorty(!shorty);
     }
 
     return (
@@ -139,7 +140,7 @@ function Movies (props) {
                     <span>{searchError}</span>
                     {localMovies && 
                     <MoviesCardList
-                        movies={localMovies.slice(0, quantityMovies)}
+                        movies={movies.slice(0, quantityMovies)}
                         arrSavedMovies={props.arrSavedMovies}//Массив сохраненных карточек
                         handleLikeMovie={props.handleLikeMovie}// Функция обработки лайка
                         />}
