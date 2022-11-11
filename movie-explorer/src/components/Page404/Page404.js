@@ -6,7 +6,6 @@ function Page404 () {
     
 const history = useHistory();
 const location = useLocation();
-console.log(history)
 
     return (
         <div className='page404'>

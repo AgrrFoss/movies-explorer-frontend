@@ -43,7 +43,7 @@ function App() {
         .then((res) => {
             if(!res.hasOwnProperty('message')) {
                 setLoggedIn(true);
-                history.push(location.pathname);
+                history.replace(location.pathname);
                 setRegisterError('');
                 setLoginError('')
             } else {

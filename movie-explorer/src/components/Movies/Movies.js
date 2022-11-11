@@ -28,6 +28,7 @@ function Movies (props) {
     useEffect(()=> {
         if(localMovies) {
             const newLM = filterestMovies(localRequest, allMovies);
+            localStorage.setItem('checkbox', shorty);
             setMovies(newLM);
         }
     }, [shorty]);
