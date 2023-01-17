@@ -8,7 +8,6 @@ frontend для дипломного проекта на react.js. В качес
 + CSS
 + React.js
 + ООП
-+ БЭМ
 
 
 ссылка на макет: https://disk.yandex.ru/d/3qBLLhY6irB9xQ
