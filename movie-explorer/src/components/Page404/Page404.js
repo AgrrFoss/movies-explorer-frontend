@@ -1,10 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory , useLocation} from 'react-router-dom';
 import './Page404.css';
 
 function Page404 () {
     
-const history = useHistory(); 
+const history = useHistory();
+const location = useLocation();
 
     return (
         <div className='page404'>
